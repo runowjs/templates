@@ -1,9 +1,9 @@
-# React + TypeScript + Vite
+# React + TypeScript
 
 ## Installation
 
 ```shell
-npm create runow your-app-name --template react/react-ts-vite
+npm create runow your-app-name --template react-ts
 ```
 
 ## Started
