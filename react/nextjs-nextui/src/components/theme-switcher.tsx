@@ -16,6 +16,7 @@ const ThemeSwitcher: React.FC = () => {
   return (
     <>
       <Button
+        variant="light"
         isIconOnly
         size="sm"
         onPress={() => {
