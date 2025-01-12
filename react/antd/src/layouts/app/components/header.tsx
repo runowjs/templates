@@ -1,7 +1,9 @@
 import { Avatar, Button, Dropdown, Flex, Typography } from 'antd';
 import { ThemeProvider } from 'antd-style';
 import {
+  BellIcon,
   ChevronDownIcon,
+  LanguagesIcon,
   LogOutIcon,
   ShieldIcon,
   UserIcon,
@@ -18,6 +20,10 @@ const Header: React.FC = () => {
         </Typography.Title>
       </ThemeProvider>
       <Flex align="center" gap={8}>
+        <ThemeProvider themeMode="dark">
+          <Button type="text" icon={<BellIcon size={18} />} />
+          <Button type="text" icon={<LanguagesIcon size={18} />} />
+        </ThemeProvider>
         <Dropdown
           menu={{
             items: [
@@ -66,7 +72,14 @@ const Header: React.FC = () => {
                 }}
               >
                 <Flex align="center" gap={8}>
-                  <Avatar src="https://i.pravatar.cc/150?u=runow" />
+                  <Avatar
+                    style={{
+                      background: '#fff',
+                    }}
+                    size="small"
+                    shape="square"
+                    src="./runow.svg"
+                  />
                   <Typography.Text>Runow</Typography.Text>
                 </Flex>
               </Button>
