@@ -1,9 +1,10 @@
 import PageContainer from '@/components/page-container';
+import { title } from '@/utils/document';
 import React from 'react';
 import { Navigate, Outlet, useMatch } from 'react-router';
 
 export function meta() {
-  return [{ title: '设置' }];
+  return [{ title: title('Settings') }];
 }
 
 const Index: React.FC = () => {
@@ -14,15 +15,15 @@ const Index: React.FC = () => {
   }
   return (
     <PageContainer
-      title="设置"
+      title="Settings"
       menus={[
         {
           key: '/settings/profile',
-          label: '个人资料',
+          label: 'Profile',
         },
         {
           key: '/settings/security',
-          label: '安全中心',
+          label: 'Security',
         },
       ]}
     >

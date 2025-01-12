@@ -1,9 +1,10 @@
 import PageContainer from '@/components/page-container';
+import { title } from '@/utils/document';
 
 export function meta() {
-  return [{ title: '首页' }];
+  return [{ title: title('Home') }];
 }
 
 export default function Index() {
-  return <PageContainer title="首页"></PageContainer>;
+  return <PageContainer title="Home"></PageContainer>;
 }

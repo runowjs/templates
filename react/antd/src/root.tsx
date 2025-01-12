@@ -11,12 +11,15 @@ import {
 } from 'react-router';
 import type { Route } from './+types/root';
 
+// theme and styles
 import theme from '@/config/theme';
-import zhCN from 'antd/locale/zh_CN';
-import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
 import './global.css';
-dayjs.locale('zh-cn');
+
+// i18n
+// import zhCN from 'antd/locale/zh_CN';
+// import dayjs from 'dayjs';
+// import 'dayjs/locale/zh-cn';
+// dayjs.locale('zh-cn');
 
 export const links: Route.LinksFunction = () => [
   {
@@ -50,9 +53,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 }
 
-export function HydrateFallback() {
-  return <>loading...</>;
-}
+// 防止白屏太久
+// export function HydrateFallback() {
+//   return <>loading...</>;
+// }
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -75,7 +79,7 @@ export function Layout({ children }: { children: ReactNode }) {
 export default function Root() {
   return (
     <StyleProvider speedy>
-      <ConfigProvider theme={theme} locale={zhCN}>
+      <ConfigProvider theme={theme}>
         <ThemeProvider>
           <Outlet />
         </ThemeProvider>

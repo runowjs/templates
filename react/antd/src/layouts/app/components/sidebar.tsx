@@ -56,19 +56,19 @@ type MenuItemType = GetProp<MenuProps, 'items'>[number] & {
 const menus: MenuItemType[] = [
   {
     key: 'home',
-    label: '首页',
+    label: 'Home',
     icon: <DynamicIcon name="home" size={16} />,
     path: '/',
   },
   {
     key: 'users',
-    label: '用户',
+    label: 'Users',
     icon: <DynamicIcon name="users" size={16} />,
     path: '/users',
   },
   {
     key: 'settings',
-    label: '设置',
+    label: 'Settings',
     icon: <DynamicIcon name="bolt" size={16} />,
     path: '/settings',
   },

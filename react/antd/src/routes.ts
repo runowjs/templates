@@ -44,6 +44,6 @@ export default [
   },
   {
     path: '*',
-    file: './pages/exception/404/index.tsx',
+    file: './pages/not-found.tsx',
   },
 ] satisfies RouteConfig;

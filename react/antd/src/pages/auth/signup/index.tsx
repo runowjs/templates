@@ -1,7 +1,9 @@
-import React from 'react';
+import { title } from '@/utils/document';
 
-const Index: React.FC = () => {
+export function meta() {
+  return [{ title: title('Sign up') }];
+}
+
+export default function Index() {
   return <>signup</>;
-};
-
-export default Index;
+}

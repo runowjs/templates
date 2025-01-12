@@ -23,12 +23,12 @@ const Header: React.FC = () => {
             items: [
               {
                 key: '/settings/profile',
-                label: '个人资料',
+                label: 'Profile',
                 icon: <UserIcon size={16} />,
               },
               {
                 key: '/settings/security',
-                label: '安全中心',
+                label: 'Security',
                 icon: <ShieldIcon size={16} />,
               },
               {
@@ -36,8 +36,9 @@ const Header: React.FC = () => {
               },
               {
                 key: '/login',
-                label: '退出登录',
+                label: 'Logout',
                 icon: <LogOutIcon size={16} />,
+                danger: true,
               },
             ],
             _internalRenderMenuItem: (dom, props) => {

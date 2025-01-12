@@ -15,7 +15,7 @@ const theme: ThemeConfig = {
     Layout: {
       headerHeight: 48,
       headerPadding: '0 8px 0 24px',
-      footerPadding: '16px 24px',
+      footerPadding: '24px',
     },
   },
 };
