@@ -33,7 +33,7 @@ export default function Index() {
     onSuccess: (data) => {
       // const { token } = data;
       // setToken(token);
-      // setErrMsg(undefined);
+      setErrMsg(undefined);
     },
     onError: (e) => {
       setErrMsg(e.message);
