@@ -3,10 +3,10 @@ import { title } from '@/utils/document';
 import { useRequest } from 'ahooks';
 import {
   Alert,
+  App,
   Avatar,
   Button,
   Card,
-  Checkbox,
   ConfigProvider,
   Flex,
   Form,
@@ -16,10 +16,10 @@ import {
 } from 'antd';
 import { useTheme } from 'antd-style';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 export function meta() {
-  return [{ title: title('Sign In') }];
+  return [{ title: title('New Password') }];
 }
 
 export default function Index() {
@@ -27,21 +27,25 @@ export default function Index() {
   const theme = useTheme();
   const navigate = useNavigate();
   const [errMsg, setErrMsg] = useState<string>();
+  const { message } = App.useApp();
 
-  const { loading: submitting, run: doSubmit } = useRequest(authService.login, {
-    manual: true,
-    onSuccess: (data) => {
-      // const { token } = data;
-      // setToken(token);
-      setErrMsg(undefined);
+  const { loading: submitting, run: doSubmit } = useRequest(
+    authService.resetPassword,
+    {
+      manual: true,
+      onSuccess: (data) => {
+        message.success('Reset Success');
+        setErrMsg(undefined);
+        navigate('/login', { replace: true });
+      },
+      onError: (e) => {
+        setErrMsg(e.message);
+      },
     },
-    onError: (e) => {
-      setErrMsg(e.message);
-    },
-  });
+  );
 
   const onFinish: FormProps['onFinish'] = (values) => {
-    // check login and then set token, eg:
+    // submit
     // doSubmit(values);
 
     // demo skip
@@ -81,50 +85,55 @@ export default function Index() {
               textAlign: 'center',
             }}
           >
-            Sign in your account
+            Set New Password
           </Typography.Title>
           <Form
             disabled={submitting}
             form={form}
             layout="vertical"
             size="large"
+            initialValues={{
+              agree: true,
+            }}
             onFinish={onFinish}
           >
             <Form.Item hidden={!errMsg}>
               <Alert type="error" showIcon message={errMsg} />
             </Form.Item>
             <Form.Item
-              name="email"
-              label="Email"
+              name="newPassword"
+              label="New Password"
               rules={[
                 {
                   required: true,
                 },
-                {
-                  type: 'email',
-                },
               ]}
             >
-              <Input placeholder="Email" />
+              <Input.Password placeholder="New Password" />
             </Form.Item>
             <Form.Item
-              name="password"
-              label="Password"
+              name="crmPassword"
+              label="Confirm New Password"
+              dependencies={['newPassword']}
               rules={[
                 {
                   required: true,
                 },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue('newPassword') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(
+                        'The new password that you entered do not match!',
+                      ),
+                    );
+                  },
+                }),
               ]}
             >
-              <Input.Password placeholder="Password" />
-            </Form.Item>
-            <Form.Item>
-              <Flex justify="space-between">
-                <Form.Item noStyle name="remember" valuePropName="checked">
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-                <Link to="/forgot-password">Forgot password?</Link>
-              </Flex>
+              <Input.Password placeholder="Confirm New Password" />
             </Form.Item>
             <Form.Item label={null}>
               <Button
@@ -133,13 +142,8 @@ export default function Index() {
                 htmlType="submit"
                 loading={submitting}
               >
-                Sign in
+                Reset
               </Button>
-            </Form.Item>
-            <Form.Item noStyle>
-              <Typography.Text>
-                Don't have an account? <Link to="/signup">Sign up</Link>
-              </Typography.Text>
             </Form.Item>
           </Form>
         </Card>

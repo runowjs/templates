@@ -12,6 +12,14 @@ class AuthService {
   public async logout() {
     return request.post('/auth/logout');
   }
+
+  public async forgotPassword(data: any) {
+    return request.post('/auth/forgotPassword', data);
+  }
+
+  public async resetPassword(data: any) {
+    return request.post('/auth/resetPassword', data);
+  }
 }
 
 export const authService: AuthService = new AuthService();

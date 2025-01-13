@@ -47,7 +47,7 @@ export default function Index() {
   );
 
   const onFinish: FormProps['onFinish'] = (values) => {
-    // check login and then set token, eg:
+    // submit
     // doSubmit(values);
 
     // demo skip
@@ -108,6 +108,9 @@ export default function Index() {
               rules={[
                 {
                   required: true,
+                },
+                {
+                  type: 'email',
                 },
               ]}
             >

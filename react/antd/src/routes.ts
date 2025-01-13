@@ -40,6 +40,14 @@ export default [
         path: '/signup',
         file: './pages/auth/signup/index.tsx',
       },
+      {
+        path: '/forgot-password',
+        file: './pages/auth/forgot-password/index.tsx',
+      },
+      {
+        path: '/new-password',
+        file: './pages/auth/new-password/index.tsx',
+      },
     ],
   },
   {
