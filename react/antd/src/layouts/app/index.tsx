@@ -49,7 +49,7 @@ const AppLayout: React.FC = () => {
   const { styles } = useStyles();
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout className={styles.root}>
+    <Layout className={styles.root} hasSider>
       <Layout.Sider
         collapsed={collapsed}
         collapsedWidth={64}
