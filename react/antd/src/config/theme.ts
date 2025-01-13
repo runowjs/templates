@@ -1,8 +1,8 @@
 import type { ThemeConfig } from 'antd';
 
 const theme: ThemeConfig = {
-  cssVar: true, // 使用CSS变量
-  hashed: false, // 关闭哈希
+  cssVar: true, // use css variables -> var(--xxx)
+  hashed: false, // close hash
   token: {
     //colorPrimary: '#5a59fb',
     borderRadiusXS: 2,

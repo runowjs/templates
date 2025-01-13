@@ -28,9 +28,11 @@ export function meta() {
 
 const Index: React.FC = () => {
   const [collapsed, { toggle: toggleCollapsed }] = useBoolean(true);
+
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
   const [form] = Form.useForm();
+
   const { tableProps, pagination, search } = useAntdTable(
     async (query, params) => {
       return await userServices

@@ -36,6 +36,7 @@ const PageContainer: React.FC<PageContainerProps> = ({
         >
           <Menu
             mode="horizontal"
+            selectable={false}
             items={menus}
             _internalRenderMenuItem={(dom, props) => {
               const { elementRef, className, ...reset } = dom.props;

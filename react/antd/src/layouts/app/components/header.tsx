@@ -1,3 +1,4 @@
+import { useAuth } from '@/proviers/auth';
 import { Avatar, Button, Dropdown, Flex, Typography } from 'antd';
 import { ThemeProvider } from 'antd-style';
 import {
@@ -12,6 +13,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Header: React.FC = () => {
+  const { identity } = useAuth();
   return (
     <>
       <ThemeProvider themeMode="dark">
@@ -78,9 +80,9 @@ const Header: React.FC = () => {
                     }}
                     size="small"
                     shape="square"
-                    src="./runow.svg"
+                    src={identity?.avatar}
                   />
-                  <Typography.Text>Runow</Typography.Text>
+                  <Typography.Text>{identity?.nickname}</Typography.Text>
                 </Flex>
               </Button>
             </ThemeProvider>
