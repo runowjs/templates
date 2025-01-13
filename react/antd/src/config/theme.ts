@@ -5,10 +5,10 @@ const theme: ThemeConfig = {
   hashed: false, // close hash
   token: {
     //colorPrimary: '#5a59fb',
-    borderRadiusXS: 2,
-    borderRadiusSM: 4,
-    borderRadius: 4,
-    borderRadiusLG: 6,
+    //borderRadiusXS: 2,
+    //borderRadiusSM: 4,
+    //borderRadius: 4,
+    //borderRadiusLG: 6,
     colorBgLayout: '#f2f5fa',
   },
   components: {

@@ -7,9 +7,9 @@ class GlobalService {
 
     return Promise.resolve({
       id: 1,
-      name: 'runow',
+      username: 'runow',
       nickname: 'Runow',
-      avatar: './runow.svg',
+      avatar: 'https://i.pravatar.cc/128?img=12',
       email: 'runow@example.com',
     });
   }

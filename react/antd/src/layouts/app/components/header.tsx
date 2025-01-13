@@ -74,14 +74,7 @@ const Header: React.FC = () => {
                 }}
               >
                 <Flex align="center" gap={8}>
-                  <Avatar
-                    style={{
-                      background: '#fff',
-                    }}
-                    size="small"
-                    shape="square"
-                    src={identity?.avatar}
-                  />
+                  <Avatar size="small" shape="square" src={identity?.avatar} />
                   <Typography.Text>{identity?.nickname}</Typography.Text>
                 </Flex>
               </Button>
