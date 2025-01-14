@@ -12,7 +12,6 @@ import {
   Flex,
   Form,
   Input,
-  Pagination,
   Row,
   Select,
   Space,
@@ -241,15 +240,18 @@ const Index: React.FC = () => {
               rowKey="id"
               columns={columns}
               rowSelection={rowSelection}
-              footer={() => {
-                return (
-                  <>
-                    <Pagination align="end" {...pagination} />
-                  </>
-                );
+              scroll={{
+                x: 1200,
               }}
               {...tableProps}
-              pagination={false}
+              pagination={{
+                ...pagination,
+                hideOnSinglePage: true,
+                style: {
+                  margin: 0,
+                  padding: 16,
+                },
+              }}
             />
           </ConfigProvider>
         </Card>

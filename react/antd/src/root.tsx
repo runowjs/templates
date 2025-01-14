@@ -1,12 +1,10 @@
-import { ConfigProvider } from 'antd';
-import { StyleProvider, ThemeProvider } from 'antd-style';
+import SystemError from '@/pages/error';
 import type { ReactNode } from 'react';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import type { Route } from './+types/root';
 
 // theme and styles
-import theme from '@/config/theme';
-import SystemError from '@/pages/error';
+import { ThemeProvider } from '@/proviers/theme';
 import './global.css';
 
 // i18n config
@@ -55,7 +53,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Scripts />
         <ScrollRestoration />
       </body>
@@ -64,13 +62,5 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function Root() {
-  return (
-    <StyleProvider speedy>
-      <ConfigProvider theme={theme}>
-        <ThemeProvider>
-          <Outlet />
-        </ThemeProvider>
-      </ConfigProvider>
-    </StyleProvider>
-  );
+  return <Outlet />;
 }

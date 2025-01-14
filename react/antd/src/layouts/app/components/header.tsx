@@ -1,12 +1,14 @@
 import { useAuth } from '@/proviers/auth';
+import { useThemeProvider } from '@/proviers/theme';
 import { Avatar, Button, Dropdown, Flex, Typography } from 'antd';
 import { ThemeProvider } from 'antd-style';
 import {
   BellIcon,
   ChevronDownIcon,
-  LanguagesIcon,
   LogOutIcon,
+  MoonIcon,
   ShieldIcon,
+  SunIcon,
   UserIcon,
 } from 'lucide-react';
 import React from 'react';
@@ -14,6 +16,7 @@ import { Link } from 'react-router';
 
 const Header: React.FC = () => {
   const { identity } = useAuth();
+  const { setMode, mode } = useThemeProvider();
   return (
     <>
       <ThemeProvider themeMode="dark">
@@ -24,7 +27,15 @@ const Header: React.FC = () => {
       <Flex align="center" gap={8}>
         <ThemeProvider themeMode="dark">
           <Button type="text" icon={<BellIcon size={18} />} />
-          <Button type="text" icon={<LanguagesIcon size={18} />} />
+          <Button
+            type="text"
+            icon={
+              mode === 'dark' ? <SunIcon size={18} /> : <MoonIcon size={18} />
+            }
+            onClick={() => {
+              setMode(mode === 'dark' ? 'light' : 'dark');
+            }}
+          />
         </ThemeProvider>
         <Dropdown
           menu={{
@@ -71,6 +82,7 @@ const Header: React.FC = () => {
                 style={{
                   height: 48,
                   border: 0,
+                  borderRadius: 0,
                 }}
               >
                 <Flex align="center" gap={8}>

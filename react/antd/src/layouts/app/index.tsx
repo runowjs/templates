@@ -38,11 +38,14 @@ const useStyles = createStyles(({ css, token, prefixCls }) => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 8px 0 24px;
     `,
     content: css`
-      padding: ${token.paddingLG}px;
+      padding: ${token.paddingXL}px;
     `,
-    footer: css``,
+    footer: css`
+      padding: ${token.padding}px ${token.paddingXL}px;
+    `,
   };
 });
 
