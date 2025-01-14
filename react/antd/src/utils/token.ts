@@ -1,22 +1,18 @@
-// +---------------------------------
-// | 令牌相关函数
-// +---------------------------------
-
 /**
- * 令牌存储字段
+ * token key
  */
 const TOKEN_KEY = import.meta.env.VITE_TOKEN_KEY;
 
 /**
- * 获取本地令牌
+ * get token
  */
 export const getToken = () => {
   return localStorage.getItem(TOKEN_KEY);
 };
 
 /**
- * 存储令牌
- * 默认使用jwt鉴权格式
+ * save token
+ * use jwt type
  * @param token
  */
 export const setToken = (token: string) => {
@@ -24,14 +20,14 @@ export const setToken = (token: string) => {
 };
 
 /**
- * 删除令牌
+ * delete token
  */
 export const delToken = () => {
   localStorage.removeItem(TOKEN_KEY);
 };
 
 /**
- * 检查令牌
+ * check token
  */
 export const hasToken = () => {
   return !!localStorage.getItem(TOKEN_KEY);

@@ -3,10 +3,10 @@ import { title } from '@/utils/document';
 import { useRequest } from 'ahooks';
 import {
   Alert,
+  App,
   Avatar,
   Button,
   Card,
-  Checkbox,
   ConfigProvider,
   Flex,
   Form,
@@ -15,33 +15,37 @@ import {
   Typography,
 } from 'antd';
 import { useTheme } from 'antd-style';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
 export function meta() {
-  return [{ title: title('Sign In') }];
+  return [{ title: title('Forgot Password') }];
 }
 
-export default function Index() {
+const Index: React.FC = () => {
   const [form] = Form.useForm();
   const theme = useTheme();
   const navigate = useNavigate();
   const [errMsg, setErrMsg] = useState<string>();
+  const { message } = App.useApp();
 
-  const { loading: submitting, run: doSubmit } = useRequest(authService.login, {
-    manual: true,
-    onSuccess: (data) => {
-      // const { token } = data;
-      // setToken(token);
-      setErrMsg(undefined);
+  const { loading: submitting, run: doSubmit } = useRequest(
+    authService.forgotPassword,
+    {
+      manual: true,
+      onSuccess: (data) => {
+        message.success('Send Success');
+        setErrMsg(undefined);
+        navigate('/login', { replace: true });
+      },
+      onError: (e) => {
+        setErrMsg(e.message);
+      },
     },
-    onError: (e) => {
-      setErrMsg(e.message);
-    },
-  });
+  );
 
   const onFinish: FormProps['onFinish'] = (values) => {
-    // check login and then set token, eg:
+    // submit
     // doSubmit(values);
 
     // demo skip
@@ -81,7 +85,7 @@ export default function Index() {
               textAlign: 'center',
             }}
           >
-            Sign in your account
+            Forgot your password?
           </Typography.Title>
           <Form
             disabled={submitting}
@@ -107,25 +111,6 @@ export default function Index() {
             >
               <Input placeholder="Email" />
             </Form.Item>
-            <Form.Item
-              name="password"
-              label="Password"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password placeholder="Password" />
-            </Form.Item>
-            <Form.Item>
-              <Flex justify="space-between">
-                <Form.Item noStyle name="remember" valuePropName="checked">
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-                <Link to="/forgot-password">Forgot password?</Link>
-              </Flex>
-            </Form.Item>
             <Form.Item label={null}>
               <Button
                 block
@@ -133,12 +118,12 @@ export default function Index() {
                 htmlType="submit"
                 loading={submitting}
               >
-                Sign in
+                Send reset instructions
               </Button>
             </Form.Item>
             <Form.Item noStyle>
               <Typography.Text>
-                Don't have an account? <Link to="/signup">Sign up</Link>
+                Have an account? <Link to="/login">Sign in</Link>
               </Typography.Text>
             </Form.Item>
           </Form>
@@ -146,4 +131,6 @@ export default function Index() {
       </ConfigProvider>
     </Flex>
   );
-}
+};
+
+export default Index;

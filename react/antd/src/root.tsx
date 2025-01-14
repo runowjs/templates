@@ -1,26 +1,21 @@
-import { ConfigProvider } from 'antd';
-import { StyleProvider, ThemeProvider } from 'antd-style';
+import SystemError from '@/pages/error';
 import type { ReactNode } from 'react';
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from 'react-router';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import type { Route } from './+types/root';
 
 // theme and styles
-import theme from '@/config/theme';
+import { ThemeProvider } from '@/proviers/theme';
 import './global.css';
 
-// i18n
+// i18n config
 // import zhCN from 'antd/locale/zh_CN';
 // import dayjs from 'dayjs';
 // import 'dayjs/locale/zh-cn';
 // dayjs.locale('zh-cn');
 
+/**
+ * Route links define <link> elements to be rendered in the document <head>
+ */
 export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
@@ -29,31 +24,21 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+/**
+ * When other route module APIs throw, the route module ErrorBoundary will render instead of the route component.
+ * @param error
+ * @constructor
+ */
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  if (isRouteErrorResponse(error)) {
-    return (
-      <>
-        <h1>
-          {error.status} {error.statusText}
-        </h1>
-        <p>{error.data}</p>
-      </>
-    );
-  } else if (error instanceof Error) {
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>{error.message}</p>
-        <p>The stack trace is:</p>
-        <pre>{error.stack}</pre>
-      </div>
-    );
-  } else {
-    return <h1>Unknown Error</h1>;
-  }
+  return <SystemError error={error} />;
 }
 
-// 防止白屏太久
+/**
+ * On initial page load, the route component renders only after the client loader is finished.
+ * If exported, a HydrateFallback can render immediately in place of the route component.
+ * @param children
+ * @constructor
+ */
 // export function HydrateFallback() {
 //   return <>loading...</>;
 // }
@@ -68,7 +53,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Scripts />
         <ScrollRestoration />
       </body>
@@ -77,13 +62,5 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function Root() {
-  return (
-    <StyleProvider speedy>
-      <ConfigProvider theme={theme}>
-        <ThemeProvider>
-          <Outlet />
-        </ThemeProvider>
-      </ConfigProvider>
-    </StyleProvider>
-  );
+  return <Outlet />;
 }

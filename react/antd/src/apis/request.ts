@@ -21,7 +21,7 @@ request.interceptors.request.use(
   (config) => {
     const token = getToken();
 
-    // 携带token
+    // inject token
     if (token) {
       config.headers.Authorization = token;
     }
@@ -38,7 +38,7 @@ request.interceptors.request.use(
  */
 request.interceptors.response.use(
   <T>(response: AxiosResponse<T>): T => {
-    // 根据后端自行处理响应
+    // Custom response
     // const { code, msg } = response.data;
     // if (code < 200 || code > 299) {
     //   throw new Error(msg);
@@ -48,13 +48,13 @@ request.interceptors.response.use(
   },
   (error) => {
     if (error.response) {
-      // 服务器返回了一个错误响应
+      // Server error
       return Promise.reject(error.response.data.msg);
     } else if (error.request) {
-      // 请求发出但没有收到响应
-      return Promise.reject(error.message || '请求超时');
+      // No response received
+      return Promise.reject(error.message || 'Timeout');
     } else {
-      // 在设置请求时发生了错误
+      // Error before request
       return Promise.reject(error.message);
     }
   },

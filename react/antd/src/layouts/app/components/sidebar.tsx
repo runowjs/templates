@@ -15,7 +15,7 @@ const useStyles = createStyles(({ css, token, prefixCls }) => {
           overflow: auto;
           padding: 0;
 
-          // 美化滚动条（推荐）
+          // custom scrollbar (recommend)
           &::-webkit-scrollbar {
             width: 4px;
             height: 4px;
@@ -30,14 +30,14 @@ const useStyles = createStyles(({ css, token, prefixCls }) => {
         }
       }
 
-      // 通过样式隐藏分组标题（推荐）
+      // hide group title (recommend)
       &.${prefixCls}-menu-inline-collapsed {
         .${prefixCls}-menu-item-group-title {
           display: none;
         }
       }
 
-      // 弱化分组箭头（偏好）
+      // shrink arrow (¬‿¬)
       .${prefixCls}-menu-submenu-arrow {
         &:before,
         &:after {
@@ -90,6 +90,7 @@ const Sidebar: React.FC = () => {
         theme="light"
         mode="inline"
         items={menus}
+        selectable={false}
         _internalRenderMenuItem={(dom, props) => {
           const { elementRef, className, ...reset } = dom.props;
           return (

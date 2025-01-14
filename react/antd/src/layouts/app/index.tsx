@@ -1,6 +1,7 @@
 import Footer from '@/layouts/app/components/footer';
 import Header from '@/layouts/app/components/header';
 import Sidebar from '@/layouts/app/components/sidebar';
+import AuthProvider from '@/proviers/auth';
 import { Layout } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
@@ -37,11 +38,14 @@ const useStyles = createStyles(({ css, token, prefixCls }) => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 8px 0 24px;
     `,
     content: css`
-      padding: ${token.paddingLG}px;
+      padding: ${token.paddingXL}px;
     `,
-    footer: css``,
+    footer: css`
+      padding: ${token.padding}px ${token.paddingXL}px;
+    `,
   };
 });
 
@@ -49,38 +53,40 @@ const AppLayout: React.FC = () => {
   const { styles } = useStyles();
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout className={styles.root}>
-      <Layout.Sider
-        collapsed={collapsed}
-        collapsedWidth={64}
-        collapsible
-        breakpoint="lg"
-        className={styles.ghost}
-      />
-      <Layout.Sider
-        collapsed={collapsed}
-        collapsedWidth={64}
-        className={styles.sidebar}
-        theme="light"
-        collapsible
-        breakpoint="lg"
-        onCollapse={setCollapsed}
-      >
-        <Sidebar />
-      </Layout.Sider>
-      <Layout className={styles.wrapper}>
-        <Layout.Header className={styles.ghost} />
-        <Layout.Header className={styles.header}>
-          <Header />
-        </Layout.Header>
-        <Layout.Content className={styles.content}>
-          <Outlet />
-        </Layout.Content>
-        <Layout.Footer className={styles.footer}>
-          <Footer />
-        </Layout.Footer>
+    <AuthProvider>
+      <Layout className={styles.root} hasSider>
+        <Layout.Sider
+          collapsed={collapsed}
+          collapsedWidth={64}
+          collapsible
+          breakpoint="lg"
+          className={styles.ghost}
+        />
+        <Layout.Sider
+          collapsed={collapsed}
+          collapsedWidth={64}
+          className={styles.sidebar}
+          theme="light"
+          collapsible
+          breakpoint="lg"
+          onCollapse={setCollapsed}
+        >
+          <Sidebar />
+        </Layout.Sider>
+        <Layout className={styles.wrapper}>
+          <Layout.Header className={styles.ghost} />
+          <Layout.Header className={styles.header}>
+            <Header />
+          </Layout.Header>
+          <Layout.Content className={styles.content}>
+            <Outlet />
+          </Layout.Content>
+          <Layout.Footer className={styles.footer}>
+            <Footer />
+          </Layout.Footer>
+        </Layout>
       </Layout>
-    </Layout>
+    </AuthProvider>
   );
 };
 
