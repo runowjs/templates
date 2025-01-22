@@ -4,11 +4,7 @@ import { useRequest } from 'ahooks';
 import {
   Alert,
   App,
-  Avatar,
   Button,
-  Card,
-  ConfigProvider,
-  Flex,
   Form,
   type FormProps,
   Input,
@@ -53,101 +49,70 @@ export default function Index() {
   };
 
   return (
-    <Flex
-      vertical
-      style={{
-        width: '100%',
-        maxWidth: 400,
-      }}
-      gap={24}
-    >
-      <Flex gap={16} align="center" justify="center">
-        <Avatar src="./runow.svg" size="large" shape="square" />
-        <Typography.Title level={3} style={{ margin: 0 }}>
-          Runow Project
-        </Typography.Title>
-      </Flex>
-      <ConfigProvider
-        theme={{
-          components: {
-            Card: {
-              bodyPadding: theme.paddingXL,
-              borderRadiusLG: 8,
-            },
-          },
+    <>
+      <Typography.Title level={2}>Set New Password</Typography.Title>
+
+      {errMsg && (
+        <Alert
+          message={errMsg}
+          type="error"
+          showIcon
+          style={{ marginBottom: 16 }}
+        />
+      )}
+      <Form
+        disabled={submitting}
+        form={form}
+        layout="vertical"
+        variant="filled"
+        size="large"
+        initialValues={{
+          agree: true,
         }}
+        onFinish={onFinish}
       >
-        <Card bordered={false}>
-          <Typography.Title
-            level={4}
-            style={{
-              margin: '0 0 1em',
-              textAlign: 'center',
-            }}
-          >
-            Set New Password
-          </Typography.Title>
-          <Form
-            disabled={submitting}
-            form={form}
-            layout="vertical"
-            size="large"
-            initialValues={{
-              agree: true,
-            }}
-            onFinish={onFinish}
-          >
-            <Form.Item hidden={!errMsg}>
-              <Alert type="error" showIcon message={errMsg} />
-            </Form.Item>
-            <Form.Item
-              name="newPassword"
-              label="New Password"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password placeholder="New Password" />
-            </Form.Item>
-            <Form.Item
-              name="crmPassword"
-              label="Confirm New Password"
-              dependencies={['newPassword']}
-              rules={[
-                {
-                  required: true,
-                },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue('newPassword') === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(
-                      new Error(
-                        'The new password that you entered do not match!',
-                      ),
-                    );
-                  },
-                }),
-              ]}
-            >
-              <Input.Password placeholder="Confirm New Password" />
-            </Form.Item>
-            <Form.Item label={null}>
-              <Button
-                block
-                type="primary"
-                htmlType="submit"
-                loading={submitting}
-              >
-                Reset
-              </Button>
-            </Form.Item>
-          </Form>
-        </Card>
-      </ConfigProvider>
-    </Flex>
+        <Form.Item hidden={!errMsg}>
+          <Alert type="error" showIcon message={errMsg} />
+        </Form.Item>
+        <Form.Item
+          name="newPassword"
+          label="New Password"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input.Password placeholder="New Password" />
+        </Form.Item>
+        <Form.Item
+          name="crmPassword"
+          label="Confirm New Password"
+          dependencies={['newPassword']}
+          rules={[
+            {
+              required: true,
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('newPassword') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                  new Error('The new password that you entered do not match!'),
+                );
+              },
+            }),
+          ]}
+        >
+          <Input.Password placeholder="Confirm New Password" />
+        </Form.Item>
+        <Form.Item label={null}>
+          <Button block type="primary" htmlType="submit" loading={submitting}>
+            Reset
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 }

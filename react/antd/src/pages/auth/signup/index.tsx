@@ -4,18 +4,13 @@ import { useRequest } from 'ahooks';
 import {
   Alert,
   App,
-  Avatar,
   Button,
-  Card,
   Checkbox,
-  ConfigProvider,
-  Flex,
   Form,
   type FormProps,
   Input,
   Typography,
 } from 'antd';
-import { useTheme } from 'antd-style';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
@@ -25,11 +20,10 @@ export function meta() {
 
 export default function Index() {
   const [form] = Form.useForm();
-  const theme = useTheme();
   const navigate = useNavigate();
   const [errMsg, setErrMsg] = useState<string>();
   const { message } = App.useApp();
-  const isAgreed = Form.useWatch('agree', form);
+  const isAgreed = Form.useWatch('agreement', form);
 
   const { loading: submitting, run: doSubmit } = useRequest(
     authService.register,
@@ -55,104 +49,84 @@ export default function Index() {
   };
 
   return (
-    <Flex
-      vertical
-      style={{
-        width: '100%',
-        maxWidth: 400,
-      }}
-      gap={24}
-    >
-      <Flex gap={16} align="center" justify="center">
-        <Avatar src="./runow.svg" size="large" shape="square" />
-        <Typography.Title level={3} style={{ margin: 0 }}>
-          Runow Project
-        </Typography.Title>
-      </Flex>
-      <ConfigProvider
-        theme={{
-          components: {
-            Card: {
-              bodyPadding: theme.paddingXL,
-              borderRadiusLG: 8,
-            },
-          },
-        }}
+    <>
+      <Typography.Title level={2}>
+        Welcome to {import.meta.env.VITE_APP_NAME}
+      </Typography.Title>
+      <Typography.Paragraph type="secondary">
+        Have an account? <Link to="/login">Login Here →</Link>
+      </Typography.Paragraph>
+      {errMsg && (
+        <Alert
+          message={errMsg}
+          type="error"
+          showIcon
+          style={{ marginBottom: 16 }}
+        />
+      )}
+      <Form
+        form={form}
+        layout="vertical"
+        size="large"
+        variant="filled"
+        requiredMark={false}
+        onFinish={onFinish}
       >
-        <Card bordered={false}>
-          <Typography.Title
-            level={4}
-            style={{
-              margin: '0 0 1em',
-              textAlign: 'center',
-            }}
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: 'Username is required',
+            },
+          ]}
+        >
+          <Input placeholder="Username" />
+        </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Password is required',
+            },
+          ]}
+        >
+          <Input.Password placeholder="Password" />
+        </Form.Item>
+        <Form.Item
+          rules={[
+            {
+              validator: (_, value) =>
+                value
+                  ? Promise.resolve()
+                  : Promise.reject(
+                      new Error('Please agree to the Terms of Use'),
+                    ),
+            },
+          ]}
+          name="agreement"
+          valuePropName="checked"
+          initialValue={true}
+        >
+          <Checkbox>
+            By registering you agree to the<a> Terms of Use </a>.
+          </Checkbox>
+        </Form.Item>
+        <Form.Item>
+          <Button
+            disabled={!isAgreed}
+            block
+            type="primary"
+            htmlType="submit"
+            loading={submitting}
           >
-            Sign up your account
-          </Typography.Title>
-          <Form
-            disabled={submitting}
-            form={form}
-            layout="vertical"
-            size="large"
-            initialValues={{
-              agree: true,
-            }}
-            onFinish={onFinish}
-          >
-            <Form.Item hidden={!errMsg}>
-              <Alert type="error" showIcon message={errMsg} />
-            </Form.Item>
-            <Form.Item
-              name="email"
-              label="Email"
-              rules={[
-                {
-                  required: true,
-                },
-                {
-                  type: 'email',
-                },
-              ]}
-            >
-              <Input placeholder="Email" />
-            </Form.Item>
-            <Form.Item
-              name="password"
-              label="Password"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password placeholder="Password" />
-            </Form.Item>
-            <Form.Item>
-              <Flex justify="space-between">
-                <Form.Item noStyle name="agree" valuePropName="checked">
-                  <Checkbox>Agree to our user agreement</Checkbox>
-                </Form.Item>
-              </Flex>
-            </Form.Item>
-            <Form.Item label={null}>
-              <Button
-                block
-                type="primary"
-                htmlType="submit"
-                disabled={!isAgreed}
-                loading={submitting}
-              >
-                Sign up
-              </Button>
-            </Form.Item>
-            <Form.Item noStyle>
-              <Typography.Text>
-                Have an account? <Link to="/login">Sign in</Link>
-              </Typography.Text>
-            </Form.Item>
-          </Form>
-        </Card>
-      </ConfigProvider>
-    </Flex>
+            Create Account
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 }

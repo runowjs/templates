@@ -3,18 +3,15 @@ import { title } from '@/utils/document';
 import { useRequest } from 'ahooks';
 import {
   Alert,
-  Avatar,
   Button,
-  Card,
   Checkbox,
-  ConfigProvider,
-  Flex,
+  Col,
   Form,
   type FormProps,
   Input,
+  Row,
   Typography,
 } from 'antd';
-import { useTheme } from 'antd-style';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
@@ -24,7 +21,6 @@ export function meta() {
 
 export default function Index() {
   const [form] = Form.useForm();
-  const theme = useTheme();
   const navigate = useNavigate();
   const [errMsg, setErrMsg] = useState<string>();
 
@@ -49,101 +45,67 @@ export default function Index() {
   };
 
   return (
-    <Flex
-      vertical
-      style={{
-        width: '100%',
-        maxWidth: 400,
-      }}
-      gap={24}
-    >
-      <Flex gap={16} align="center" justify="center">
-        <Avatar src="./runow.svg" size="large" shape="square" />
-        <Typography.Title level={3} style={{ margin: 0 }}>
-          Runow Project
-        </Typography.Title>
-      </Flex>
-      <ConfigProvider
-        theme={{
-          components: {
-            Card: {
-              bodyPadding: theme.paddingXL,
-              borderRadiusLG: 8,
-            },
-          },
-        }}
+    <>
+      <Typography.Title level={2}>Welcome back</Typography.Title>
+      <Typography.Paragraph type="secondary">
+        Don't have an account? <Link to="/signup">Signup Now →</Link>
+      </Typography.Paragraph>
+      {errMsg && (
+        <Alert
+          message={errMsg}
+          type="error"
+          showIcon
+          style={{ marginBottom: 16 }}
+        />
+      )}
+      <Form
+        form={form}
+        layout="vertical"
+        size="large"
+        variant="filled"
+        requiredMark={false}
+        onFinish={onFinish}
       >
-        <Card bordered={false}>
-          <Typography.Title
-            level={4}
-            style={{
-              margin: '0 0 1em',
-              textAlign: 'center',
-            }}
-          >
-            Sign in your account
-          </Typography.Title>
-          <Form
-            disabled={submitting}
-            form={form}
-            layout="vertical"
-            size="large"
-            onFinish={onFinish}
-          >
-            <Form.Item hidden={!errMsg}>
-              <Alert type="error" showIcon message={errMsg} />
-            </Form.Item>
-            <Form.Item
-              name="email"
-              label="Email"
-              rules={[
-                {
-                  required: true,
-                },
-                {
-                  type: 'email',
-                },
-              ]}
-            >
-              <Input placeholder="Email" />
-            </Form.Item>
-            <Form.Item
-              name="password"
-              label="Password"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input.Password placeholder="Password" />
-            </Form.Item>
-            <Form.Item>
-              <Flex justify="space-between">
-                <Form.Item noStyle name="remember" valuePropName="checked">
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-                <Link to="/forgot-password">Forgot password?</Link>
-              </Flex>
-            </Form.Item>
-            <Form.Item label={null}>
-              <Button
-                block
-                type="primary"
-                htmlType="submit"
-                loading={submitting}
-              >
-                Sign in
-              </Button>
-            </Form.Item>
-            <Form.Item noStyle>
-              <Typography.Text>
-                Don't have an account? <Link to="/signup">Sign up</Link>
-              </Typography.Text>
-            </Form.Item>
-          </Form>
-        </Card>
-      </ConfigProvider>
-    </Flex>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: 'Username is required',
+            },
+          ]}
+        >
+          <Input placeholder="Username/Email" />
+        </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Password is required',
+            },
+          ]}
+        >
+          <Input.Password placeholder="Password" />
+        </Form.Item>
+        <Form.Item name="remember" valuePropName="checked">
+          <Row justify="space-between">
+            <Col>
+              <Checkbox>Remember me</Checkbox>
+            </Col>
+            <Col>
+              <Link to="/forgot-password">Forgot password?</Link>
+            </Col>
+          </Row>
+        </Form.Item>
+        <Form.Item>
+          <Button block type="primary" htmlType="submit" loading={submitting}>
+            Log in
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 }
