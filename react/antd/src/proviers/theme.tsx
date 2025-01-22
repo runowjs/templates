@@ -1,13 +1,12 @@
 import { darkConfig, lightConfig } from '@/config/theme';
 import { useLocalStorageState } from 'ahooks';
-import { ConfigProvider } from 'antd';
 import { ThemeProvider as AntdThemeProvider, StyleProvider } from 'antd-style';
-import React, { createContext, useContext, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
 
-type Mode = 'dark' | 'light';
+type Mode = 'dark' | 'light' | 'auto';
 
 type ThemeProviderContext = {
-  mode: Mode;
+  mode?: Mode;
   setMode: (mode: Mode) => void;
 };
 
@@ -19,14 +18,9 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const [mode, setMode] = useLocalStorageState<Mode>('themeMode', {
-    defaultValue: 'light',
+    defaultValue: 'auto',
     listenStorageChange: true,
   });
-
-  useEffect(() => {
-    const html = document.querySelector('html');
-    html?.setAttribute('data-theme-mode', mode);
-  }, [mode]);
 
   return (
     <ThemeProviderContext.Provider
@@ -36,9 +30,13 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({
       }}
     >
       <StyleProvider speedy>
-        <ConfigProvider theme={mode === 'dark' ? darkConfig : lightConfig}>
-          <AntdThemeProvider themeMode={mode}>{children}</AntdThemeProvider>
-        </ConfigProvider>
+        <AntdThemeProvider
+          defaultThemeMode="auto"
+          themeMode={mode}
+          theme={mode === 'dark' ? darkConfig : lightConfig}
+        >
+          {children}
+        </AntdThemeProvider>
       </StyleProvider>
     </ThemeProviderContext.Provider>
   );
