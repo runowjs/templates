@@ -4,7 +4,7 @@ body {
   background: #f2f5fa; /* fix: mac os scroll bg */
 }
 
-html[data-theme-mode="dark"] {
+html.dark {
   body {
     background: #000; /* fix: mac os scroll bg */
   }
