@@ -1,14 +1,12 @@
+import ThemeSwitcher from '@/components/theme-switcher';
 import { useAuth } from '@/proviers/auth';
-import { useThemeProvider } from '@/proviers/theme';
 import { Avatar, Button, Dropdown, Flex, Typography } from 'antd';
 import { ThemeProvider } from 'antd-style';
 import {
   BellIcon,
   ChevronDownIcon,
   LogOutIcon,
-  MoonIcon,
   ShieldIcon,
-  SunIcon,
   UserIcon,
 } from 'lucide-react';
 import React from 'react';
@@ -16,7 +14,6 @@ import { Link } from 'react-router';
 
 const Header: React.FC = () => {
   const { identity } = useAuth();
-  const { setMode, mode } = useThemeProvider();
   return (
     <>
       <ThemeProvider themeMode="dark">
@@ -27,15 +24,7 @@ const Header: React.FC = () => {
       <Flex align="center" gap={8}>
         <ThemeProvider themeMode="dark">
           <Button type="text" icon={<BellIcon size={18} />} />
-          <Button
-            type="text"
-            icon={
-              mode === 'dark' ? <SunIcon size={18} /> : <MoonIcon size={18} />
-            }
-            onClick={() => {
-              setMode(mode === 'dark' ? 'light' : 'dark');
-            }}
-          />
+          <ThemeSwitcher />
         </ThemeProvider>
         <Dropdown
           menu={{
