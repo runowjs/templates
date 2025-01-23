@@ -1,7 +1,7 @@
 import { type GetProp, Menu, type MenuProps } from 'antd';
 import { createStyles } from 'antd-style';
 import classNames from 'classnames';
-import { DynamicIcon } from 'lucide-react/dynamic';
+import { BoltIcon, HomeIcon, TriangleAlertIcon, UsersIcon } from 'lucide-react';
 import React from 'react';
 import { NavLink } from 'react-router';
 
@@ -54,28 +54,35 @@ type MenuItemType = GetProp<MenuProps, 'items'>[number] & {
 };
 
 const menus: MenuItemType[] = [
+  // use dynamic icons [not recommended]
+  // {
+  //   key: 'home',
+  //   label: 'Home',
+  //   icon: <DynamicIcon name="home" size={16} />,
+  //   path: '/',
+  // },
   {
     key: 'home',
     label: 'Home',
-    icon: <DynamicIcon name="home" size={16} />,
+    icon: <HomeIcon size={16} />,
     path: '/',
   },
   {
     key: 'users',
     label: 'Users',
-    icon: <DynamicIcon name="users" size={16} />,
+    icon: <UsersIcon size={16} />,
     path: '/users',
   },
   {
     key: 'settings',
     label: 'Settings',
-    icon: <DynamicIcon name="bolt" size={16} />,
+    icon: <BoltIcon size={16} />,
     path: '/settings',
   },
   {
     key: 'not-found',
     label: '404',
-    icon: <DynamicIcon name="triangle-alert" size={16} />,
+    icon: <TriangleAlertIcon size={16} />,
     path: '/xxx',
   },
 ];

@@ -18,7 +18,13 @@ import {
   Table,
   type TableProps,
 } from 'antd';
-import { DynamicIcon } from 'lucide-react/dynamic';
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  DownloadIcon,
+  FoldersIcon,
+  TrashIcon,
+} from 'lucide-react';
 import React, { useState } from 'react';
 
 export function meta() {
@@ -168,10 +174,11 @@ const Index: React.FC = () => {
                       type="link"
                       iconPosition="end"
                       icon={
-                        <DynamicIcon
-                          size={14}
-                          name={collapsed ? 'chevron-down' : 'chevron-up'}
-                        />
+                        collapsed ? (
+                          <ChevronDownIcon size={14} />
+                        ) : (
+                          <ChevronUpIcon size={14} />
+                        )
                       }
                       onClick={toggleCollapsed}
                     >
@@ -202,25 +209,15 @@ const Index: React.FC = () => {
               <Space>
                 {selectedRowKeys.length > 0 && (
                   <>
-                    <Button
-                      key="move"
-                      icon={<DynamicIcon name="folders" size={14} />}
-                    >
+                    <Button key="move" icon={<FoldersIcon size={14} />}>
                       Move to
                     </Button>
-                    <Button
-                      key="delete"
-                      icon={<DynamicIcon name="trash" size={14} />}
-                      danger
-                    >
+                    <Button key="delete" icon={<TrashIcon size={14} />} danger>
                       Delete
                     </Button>
                   </>
                 )}
-                <Button
-                  title="export"
-                  icon={<DynamicIcon name="download" size={14} />}
-                >
+                <Button title="export" icon={<DownloadIcon size={14} />}>
                   Export
                 </Button>
               </Space>
