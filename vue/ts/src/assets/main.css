@@ -1,0 +1,20 @@
+@import './base.css';
+
+a {
+  font-weight: 500;
+  color: #22ac38;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #1f9933;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
