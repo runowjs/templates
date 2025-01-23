@@ -1,54 +1,16 @@
 import bannerUrl from '@/assets/images/sso.jpg';
+import useStyles from '@/layouts/auth/styles';
 import { Avatar, ConfigProvider, Layout, Typography } from 'antd';
-import { createStyles, useResponsive } from 'antd-style';
+import { useResponsive } from 'antd-style';
 import React from 'react';
 import { Outlet } from 'react-router';
-
-const useStyles = createStyles(({ css, token, prefixCls }) => {
-  return {
-    root: css`
-      min-height: 100vh;
-    `,
-    header: css`
-      height: auto;
-      line-height: 1;
-      padding: ${token.paddingLG}px;
-    `,
-    wrap: css`
-      background-color: ${token.colorBgContainer};
-    `,
-    content: css`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    `,
-    footer: css`
-      text-align: center;
-    `,
-    sider: css`
-      .${prefixCls}-layout-sider-children > div {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-    `,
-    container: css`
-      max-width: ${token.screenXS}px;
-      width: 100%;
-      padding: ${token.padding}px;
-    `,
-  };
-});
 
 const AuthLayout: React.FC = () => {
   const { styles } = useStyles();
 
-  // 避免移动设备banner栏闪烁
+  // Avoid flashing banner bars on mobile devices
   const { laptop: showBanner } = useResponsive();
+
   return (
     <ConfigProvider
       theme={{

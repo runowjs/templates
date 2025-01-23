@@ -22,37 +22,35 @@ const ThemeSwitcher: React.FC = () => {
       }
       const { clientX, clientY } = e;
       const isDark = mode === 'dark';
-      const html = document.querySelector('html');
 
-      if (html) {
-        html.setAttribute('disabled-transition', '');
-        const clipPath = [
-          `circle(0px at ${clientX}px ${clientY}px)`,
-          `circle(${Math.hypot(
-            Math.max(clientX, window.innerWidth - clientX),
-            Math.max(clientY, window.innerHeight - clientY),
-          )}px at ${clientX}px ${clientY}px)`,
-        ];
+      // disabled all transitions
+      document.documentElement.setAttribute('disabled-transition', '');
 
-        await document.startViewTransition(async () => {
-          setMode(isDark ? 'light' : 'dark');
-          document.documentElement.classList.remove(isDark ? 'dark' : 'light');
-          document.documentElement.classList.add(isDark ? 'light' : 'dark');
-        }).ready;
+      const clipPath = [
+        `circle(0px at ${clientX}px ${clientY}px)`,
+        `circle(${Math.hypot(
+          Math.max(clientX, window.innerWidth - clientX),
+          Math.max(clientY, window.innerHeight - clientY),
+        )}px at ${clientX}px ${clientY}px)`,
+      ];
 
-        const animation = document.documentElement.animate(
-          { clipPath: isDark ? clipPath.reverse() : clipPath },
-          {
-            duration: 500,
-            easing: 'ease-in',
-            pseudoElement: `::view-transition-${isDark ? 'old' : 'new'}(root)`,
-          },
-        );
+      await document.startViewTransition(() => {
+        setMode(isDark ? 'light' : 'dark');
+      }).ready;
 
-        animation.finished.then(() => {
-          html.removeAttribute('disabled-transition');
-        });
-      }
+      const animation = document.documentElement.animate(
+        { clipPath: isDark ? clipPath.reverse() : clipPath },
+        {
+          duration: 500,
+          easing: 'ease-in',
+          pseudoElement: `::view-transition-${isDark ? 'old' : 'new'}(root)`,
+        },
+      );
+
+      animation.finished.then(() => {
+        // restore all transitions
+        document.documentElement.removeAttribute('disabled-transition');
+      });
     },
     [mode],
   );

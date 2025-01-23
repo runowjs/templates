@@ -1,7 +1,7 @@
 import { darkConfig, lightConfig } from '@/config/theme';
 import { useLocalStorageState } from 'ahooks';
 import { ThemeProvider as AntdThemeProvider, StyleProvider } from 'antd-style';
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 
 type Mode = 'dark' | 'light' | 'auto';
 
@@ -21,6 +21,12 @@ export const ThemeProvider: React.FC<React.PropsWithChildren> = ({
     defaultValue: 'auto',
     listenStorageChange: true,
   });
+
+  useEffect(() => {
+    if (mode) {
+      document.documentElement.setAttribute('class', mode);
+    }
+  }, [mode]);
 
   return (
     <ThemeProviderContext.Provider
