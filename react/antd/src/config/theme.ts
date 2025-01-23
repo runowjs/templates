@@ -21,7 +21,6 @@ const lightConfig: ThemeConfig = {
 const darkConfig: ThemeConfig = {
   ...sharedConfig,
   algorithm: theme.darkAlgorithm,
-  token: {},
   components: {
     Layout: {
       headerHeight: 48,
