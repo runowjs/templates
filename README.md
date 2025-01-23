@@ -9,7 +9,7 @@
 
 ## Vue templates
 
-> Just coming!
+- 🦊 [vue-ts](https://runow.dev/guide/vue.html#vue-typescript)
 
 ## Angular templates
 
