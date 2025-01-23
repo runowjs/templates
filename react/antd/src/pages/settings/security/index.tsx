@@ -18,8 +18,7 @@ import {
   Typography,
 } from 'antd';
 import { useTheme } from 'antd-style';
-import { BadgeCheckIcon, Trash2Icon } from 'lucide-react';
-import { DynamicIcon } from 'lucide-react/dynamic';
+import { BadgeCheckIcon, CompassIcon, Trash2Icon } from 'lucide-react';
 import React from 'react';
 
 export function meta() {
@@ -151,28 +150,24 @@ const Index: React.FC = () => {
                   dataSource={[
                     {
                       id: 1,
-                      icon: 'compass',
                       title: 'Safari on Mac OS X',
                       location: 'Mexico City, Mexico',
                       session: 'Current session',
                     },
                     {
                       id: 2,
-                      icon: 'chrome',
                       title: 'Chrome on Windows',
                       location: 'Mexico City, Mexico',
                       session: 'Current session',
                     },
                     {
                       id: 3,
-                      icon: 'compass',
                       title: 'Safari on Mac OS X',
                       location: 'Mexico City, Mexico',
                       session: 'Current session',
                     },
                     {
                       id: 4,
-                      icon: 'chrome',
                       title: 'Chrome on Windows',
                       location: 'Mexico City, Mexico',
                       session: 'Current session',
@@ -181,15 +176,14 @@ const Index: React.FC = () => {
                   columns={[
                     {
                       width: 60,
-                      dataIndex: 'icon',
-                      render: (value) => {
+                      render: () => {
                         return (
                           <Avatar
                             style={{
                               background: theme.colorPrimary,
                             }}
                             shape="square"
-                            icon={<DynamicIcon name={value} size={18} />}
+                            icon={<CompassIcon size={18} />}
                           />
                         );
                       },

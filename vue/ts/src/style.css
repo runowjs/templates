@@ -1,4 +1,6 @@
-@import './base.css';
+body {
+  margin: 0;
+}
 
 a {
   font-weight: 500;
@@ -17,4 +19,3 @@ a:hover {
   align-items: center;
   min-height: 100vh;
 }
-
