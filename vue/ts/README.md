@@ -1,10 +1,10 @@
-# React + Next.js + HeadlessUI
+# Vue + TypeScript
 
 ## Installation
 
 ```bash
 # npm 7+, extra double-dash is needed:
-$ npm create runow your-app-name -- --template react-nextjs-headlessui
+$ npm create runow your-app-name -- --template vue-ts
 ```
 
 ## Started
