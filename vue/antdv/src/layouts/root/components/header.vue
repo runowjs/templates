@@ -13,13 +13,15 @@ import {
   <a-flex justify="space-between" align="center" style="height: 100%">
     <span></span>
     <a-flex :gap="8" align="center">
-      <a-button type="text">
-        <template #icon>
-          <a-icon>
-            <bell-icon :size="16" />
-          </a-icon>
-        </template>
-      </a-button>
+      <a-badge dot :offset="[-8, 6]">
+        <a-button type="text">
+          <template #icon>
+            <a-icon>
+              <bell-icon :size="16" />
+            </a-icon>
+          </template>
+        </a-button>
+      </a-badge>
       <a-button type="text">
         <template #icon>
           <a-icon>

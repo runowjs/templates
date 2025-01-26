@@ -56,6 +56,7 @@ const collapsed = ref<boolean>(false);
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 1000;
 }
 .header {
   background: #fff;
@@ -63,11 +64,18 @@ const collapsed = ref<boolean>(false);
   right: 0;
   top: 0;
   transition: all 0.2s;
+  z-index: 1000;
 }
 .ant-layout-header {
   height: 48px;
   line-height: 48px;
-  padding-inline: 16px;
+  padding-inline: 16px 4px;
+}
+.container {
+  padding: 32px;
+}
+.footer {
+  padding: 0 32px 32px;
 }
 
 [data-theme='dark'] .header {
