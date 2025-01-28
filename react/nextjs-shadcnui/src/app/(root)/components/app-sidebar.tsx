@@ -19,6 +19,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarRail,
   useSidebar,
 } from '@/components/ui/sidebar';
 import {
@@ -32,9 +33,10 @@ import {
   LogOutIcon,
   SparklesIcon,
   TriangleAlertIcon,
-  UserIcon,
+  UsersIcon,
 } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const menus = [
@@ -48,7 +50,7 @@ const menus = [
     label: 'Users',
     path: '/users',
     key: 'users',
-    icon: UserIcon,
+    icon: UsersIcon,
   },
   {
     label: 'Settings',
@@ -134,9 +136,11 @@ const NavUser: React.FC<{
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOutIcon />
-              Log out
+            <DropdownMenuItem asChild>
+              <Link href="/login">
+                <LogOutIcon />
+                Log out
+              </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -146,6 +150,7 @@ const NavUser: React.FC<{
 };
 
 const AppSidebar: React.FC = () => {
+  const pathname = usePathname();
   return (
     <Sidebar variant="sidebar" collapsible="icon">
       <SidebarHeader>
@@ -170,7 +175,7 @@ const AppSidebar: React.FC = () => {
             <SidebarMenu>
               {menus.map((menu) => (
                 <SidebarMenuItem key={menu.key}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={pathname === menu.path}>
                     <Link href={menu.path}>
                       <menu.icon />
                       <span>{menu.label}</span>
@@ -187,10 +192,11 @@ const AppSidebar: React.FC = () => {
           user={{
             name: 'shadcn',
             email: 'm@example.com',
-            avatar: '/avatars/shadcn.jpg',
+            avatar: 'https://i.pravatar.cc/128?img=12',
           }}
         />
       </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 };
