@@ -5,11 +5,10 @@ import {
   Alert,
   Button,
   Checkbox,
-  Col,
+  Flex,
   Form,
   type FormProps,
   Input,
-  Row,
   Typography,
 } from 'antd';
 import { useState } from 'react';
@@ -90,15 +89,13 @@ export default function Index() {
         >
           <Input.Password placeholder="Password" />
         </Form.Item>
-        <Form.Item name="remember" valuePropName="checked">
-          <Row justify="space-between">
-            <Col>
+        <Form.Item>
+          <Flex justify="space-between" align="center">
+            <Form.Item name="remember" noStyle valuePropName="checked">
               <Checkbox>Remember me</Checkbox>
-            </Col>
-            <Col>
-              <Link to="/forgot-password">Forgot password?</Link>
-            </Col>
-          </Row>
+            </Form.Item>
+            <Link to="/forgot-password">Forgot password?</Link>
+          </Flex>
         </Form.Item>
         <Form.Item>
           <Button block type="primary" htmlType="submit" loading={submitting}>
