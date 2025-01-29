@@ -32,7 +32,7 @@ import {
       <a-dropdown>
         <a-button type="text" class="profile-btn">
           <template #icon>
-            <a-avatar src="https://i.pravatar.cc/128?img=12" />
+            <a-avatar size="small" src="https://i.pravatar.cc/128?img=12" />
           </template>
           <span>Nickname</span>
           <a-icon>
@@ -58,7 +58,7 @@ import {
               <a-icon>
                 <log-out-icon :size="16" />
               </a-icon>
-              Logout
+              <router-link to="/login"> Logout </router-link>
             </a-menu-item>
           </a-menu>
         </template>

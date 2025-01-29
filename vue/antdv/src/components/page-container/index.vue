@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { ItemType } from 'ant-design-vue';
+import { computed, h } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const props = defineProps<{
   title?: string;
@@ -7,6 +9,25 @@ const props = defineProps<{
   size?: 'small' | 'medium' | 'large';
   showBack?: boolean;
 }>();
+
+const generateLabel = (item: any) => {
+  return item?.href
+    ? h(
+        RouterLink,
+        {
+          to: item.href,
+        },
+        item.label,
+      )
+    : item.label;
+};
+
+const menuItems = computed(() => {
+  return props.menus?.map((menu) => ({
+    ...menu,
+    label: generateLabel(menu),
+  }));
+});
 </script>
 
 <template>
@@ -18,8 +39,8 @@ const props = defineProps<{
     </slot>
     <slot name="menu">
       <a-menu
-        v-if="props.menus"
-        :items="props.menus"
+        v-if="menuItems"
+        :items="menuItems"
         mode="horizontal"
         class="menu"
       />

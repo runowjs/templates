@@ -16,7 +16,7 @@ const props = defineProps<{
 const generateIcon = (icon: FunctionalComponent) => {
   return h(AntIcon, [
     h(icon, {
-      size: 18,
+      size: 16,
     }),
   ]);
 };
@@ -73,6 +73,7 @@ const menus = ref([
         mode="inline"
         :items="menus"
         theme="dark"
+        :selectable="false"
       />
     </a-flex>
   </a-flex>

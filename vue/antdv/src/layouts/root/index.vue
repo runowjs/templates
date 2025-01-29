@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Footer from '@/layouts/root/components/footer.vue';
 import Header from '@/layouts/root/components/header.vue';
 import Sidebar from '@/layouts/root/components/sidebar.vue';
 import { ref } from 'vue';
@@ -39,7 +40,9 @@ const collapsed = ref<boolean>(false);
       <a-layout-content class="container">
         <router-view />
       </a-layout-content>
-      <a-layout-footer class="footer">footer</a-layout-footer>
+      <a-layout-footer class="footer">
+        <Footer />
+      </a-layout-footer>
     </a-layout>
   </a-layout>
 </template>
