@@ -41,7 +41,7 @@ const ThemeSwitcher: React.FC = () => {
       const animation = document.documentElement.animate(
         { clipPath: isDark ? clipPath.reverse() : clipPath },
         {
-          duration: 500,
+          duration: 300,
           easing: 'ease-in',
           pseudoElement: `::view-transition-${isDark ? 'old' : 'new'}(root)`,
         },
@@ -57,7 +57,9 @@ const ThemeSwitcher: React.FC = () => {
 
   return (
     <Button
-      type="text"
+      color="default"
+      variant="filled"
+      size="large"
       icon={mode === 'dark' ? <SunIcon size={18} /> : <MoonIcon size={18} />}
       onClick={handleToggle}
     />

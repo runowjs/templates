@@ -1,9 +1,8 @@
-import { title } from '@/utils/document';
 import { Button, Flex, Result } from 'antd';
 import React from 'react';
 
 export function meta() {
-  return [{ title: title('Page Not Found') }];
+  return [{ title: 'Page Not Found' }];
 }
 
 const NotFound: React.FC = () => {

@@ -1,13 +1,16 @@
 import './App.css';
-import reactLogo from './assets/react.svg';
 
 function App() {
   return (
     <>
-      <a href="https://react.dev" target="_blank">
-        <img src={reactLogo} alt="React logo" />
+      <a href="https://vite.dev/" target="_blank">
+        <img
+          src="https://cdn.svgporn.com/logos/vitejs.svg"
+          height="128"
+          alt="vite logo"
+        />
       </a>
-      <h1>React + TypeScript</h1>
+      <h1>React + Vite</h1>
       <p>
         Powered by{' '}
         <a href="https://runow.dev" target="_blank">

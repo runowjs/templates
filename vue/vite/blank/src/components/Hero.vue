@@ -1,13 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-  <a href="https://react.dev" target="_blank">
+  <a href="https://vite.dev/" target="_blank">
     <img
-      alt="Vue logo"
+      alt="vite logo"
       class="logo"
-      src="@/assets/vue.svg"
-      width="125"
-      height="125"
+      src="https://cdn.svgporn.com/logos/vitejs.svg"
+      width="128"
+      height="128"
     />
   </a>
   <h1>Vue + Vite</h1>
