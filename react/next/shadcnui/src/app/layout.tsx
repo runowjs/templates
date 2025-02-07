@@ -4,7 +4,7 @@ import React from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'React + Next.js + Shadcn/ui',
+  title: 'React + Next.js + ShadcnUI',
   description: 'Powered by Runow',
 };
 

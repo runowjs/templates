@@ -10,7 +10,7 @@
       height="125"
     />
   </a>
-  <h1>Vue + TypeScript</h1>
+  <h1>Vue + Vite</h1>
   <p>Powered by <a href="https://runow.dev" target="_blank"> Runow </a></p>
 </template>
 
