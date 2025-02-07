@@ -29,6 +29,14 @@
 
 > Come and contribute!
 
+## Astro templates
+
+> Just coming!
+
 ## Vanilla templates
+
+> Just coming!
+
+## Cross templates
 
 > Just coming!
