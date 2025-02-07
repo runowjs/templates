@@ -1,37 +1,39 @@
-import { title } from '@/utils/document';
-import { Card, Col, Row } from 'antd';
+import ThemeSwitcher from '@/components/theme-switcher';
+import useStyles from '@/pages/styles';
+import { Flex, Typography } from 'antd';
 
 export function meta() {
-  return [{ title: title('Home') }];
+  return [{ title: 'React + Vite + Ant Design' }];
 }
 
 export default function Index() {
+  const { styles } = useStyles();
   return (
-    <Row gutter={[16, 16]}>
-      <Col xs={24} sm={12} md={12} lg={6}>
-        <Card style={{ height: 200 }} />
-      </Col>
-      <Col xs={24} sm={12} md={12} lg={6}>
-        <Card style={{ height: 200 }} />
-      </Col>
-      <Col xs={24} sm={12} md={12} lg={6}>
-        <Card style={{ height: 200 }} />
-      </Col>
-      <Col xs={24} sm={12} md={12} lg={6}>
-        <Card style={{ height: 200 }} />
-      </Col>
-      <Col xs={24} sm={24} md={24} lg={18}>
-        <Card style={{ height: 400 }} />
-      </Col>
-      <Col xs={24} sm={24} md={24} lg={6}>
-        <Card style={{ height: 400 }} />
-      </Col>
-      <Col xs={24} sm={24} md={12} lg={12}>
-        <Card style={{ height: 400 }} />
-      </Col>
-      <Col xs={24} sm={24} md={12} lg={12}>
-        <Card style={{ height: 400 }} />
-      </Col>
-    </Row>
+    <Flex
+      vertical
+      align="center"
+      justify="center"
+      gap={32}
+      className={styles.root}
+    >
+      <a href="https://ant-design.antgroup.com/">
+        <img
+          src="https://cdn.svgporn.com/logos/ant-design.svg"
+          height="128"
+          alt="antd logo"
+        />
+      </a>
+      <Typography.Title style={{ margin: 0 }} level={2}>
+        React + Vite + Ant Design
+      </Typography.Title>
+      <Typography.Paragraph style={{ margin: 0 }}>
+        Powered by{' '}
+        <a href="https://runow.dev" target="_blank">
+          Runow
+        </a>
+      </Typography.Paragraph>
+
+      <ThemeSwitcher />
+    </Flex>
   );
 }

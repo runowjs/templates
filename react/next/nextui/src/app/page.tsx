@@ -1,11 +1,12 @@
-import NextFillIcon from '@/icons/next-fill';
+import ThemeSwitcher from '@/components/theme-switcher';
+import NextUIFillIcon from '@/icons/next-ui-fill';
 
 export default function Home() {
   return (
     <>
       <div className="w-full min-h-screen flex flex-col items-center justify-center gap-8">
-        <a href="https://nextjs.org/" target="_blank">
-          <NextFillIcon width={128} height={128} />
+        <a href="https://www.heroui.com/" target="_blank">
+          <NextUIFillIcon width={128} height={128} />
         </a>
         <h1 className="text-4xl font-bold">React + Next.js + NextUI</h1>
         <p className="text-base">
@@ -14,6 +15,9 @@ export default function Home() {
             Runow
           </a>
         </p>
+        <div>
+          <ThemeSwitcher />
+        </div>
       </div>
     </>
   );

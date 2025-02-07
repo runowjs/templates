@@ -18,13 +18,12 @@ const ThemeSwitcher: React.FC = () => {
       <Button
         variant="light"
         isIconOnly
-        size="sm"
         onPress={() => {
           setTheme(theme === 'dark' ? 'light' : 'dark');
         }}
       >
-        <LightLineIcon className="hidden dark:block size-5" />
-        <DarkLineIcon className="block dark:hidden size-5" />
+        <LightLineIcon className="hidden dark:block size-6" />
+        <DarkLineIcon className="block dark:hidden size-6" />
       </Button>
     </>
   );

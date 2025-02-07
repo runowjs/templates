@@ -1,41 +1,26 @@
 <script setup lang="ts"></script>
 
 <template>
-  <page-container title="Welcome back, Runow">
-    <a-row :gutter="[16, 16]">
-      <a-col :xs="24" :sm="12" :md="12" :lg="6">
-        <a-card class="card"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="12" :lg="6">
-        <a-card class="card"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="12" :lg="6">
-        <a-card class="card"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="12" :lg="6">
-        <a-card class="card"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="24" :lg="18">
-        <a-card class="card2"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="24" :lg="6">
-        <a-card class="card2"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="12" :lg="12">
-        <a-card class="card"></a-card>
-      </a-col>
-      <a-col :xs="24" :sm="12" :md="12" :lg="12">
-        <a-card class="card"></a-card>
-      </a-col>
-    </a-row>
-  </page-container>
+  <a-flex vertical class="wrap" :gap="32" align="center" justify="center">
+    <a href="https://next.antdv.com/">
+      <img
+        src="https://next.antdv.com/assets/logo.1ef800a8.svg"
+        height="128"
+        alt="ant design vue logo"
+      />
+    </a>
+    <a-typography-title :level="2" :style="{ margin: 0 }">
+      React + Vite + Ant Design Vue
+    </a-typography-title>
+    <a-typography-paragraph :style="{ margin: 0 }">
+      Powered by
+      <a href="https://runow.dev" target="_blank"> Runow </a>
+    </a-typography-paragraph>
+  </a-flex>
 </template>
 
 <style scoped>
-.card {
-  height: 200px;
-}
-.card2 {
-  height: 400px;
+.wrap {
+  min-height: 100vh;
 }
 </style>
