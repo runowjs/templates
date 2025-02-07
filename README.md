@@ -4,9 +4,9 @@
 
 ### Vite
 
-| Icon                                                                             | Link                                                                  | Tags                                                      |
-|----------------------------------------------------------------------------------|-----------------------------------------------------------------------|-----------------------------------------------------------|
-| <img height="24" src="https://cdn.svgporn.com/logos/css-3.svg"  width="24"/>     | [react-vite-blank](https://runow.dev/guide/react/vite.html#blank)     | React, Vite, TypeScript                                   |
+| Icon                                                                             | Link                                                                 | Tags                                                      |
+|----------------------------------------------------------------------------------|----------------------------------------------------------------------|-----------------------------------------------------------|
+| <img height="24" src="https://cdn.svgporn.com/logos/css-3.svg"  width="24"/>     | [react-vite](https://runow.dev/guide/react/vite.html#blank)     | React, Vite, TypeScript                                   |
 | <img height="24" src="https://cdn.svgporn.com/logos/ant-design.svg" width="24"/> | [react-vite-antd](https://runow.dev/guide/react/vite.html#ant-design) | React, Vite, Ant Design, TypeScript, React-Router, Lucide |
 
 ### Next.js
