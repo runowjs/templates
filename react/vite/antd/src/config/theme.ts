@@ -12,8 +12,6 @@ const lightConfig: ThemeConfig = {
   components: {
     Layout: {
       headerHeight: 48,
-      bodyBg: '#f2f5fa',
-      footerBg: '#f2f5fa',
     },
   },
 };
@@ -24,7 +22,6 @@ const darkConfig: ThemeConfig = {
   components: {
     Layout: {
       headerHeight: 48,
-      headerBg: '#1f1f1f',
     },
   },
 };

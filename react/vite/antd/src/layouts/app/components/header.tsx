@@ -1,5 +1,4 @@
 import ThemeSwitcher from '@/components/theme-switcher';
-import { useAuth } from '@/proviers/auth';
 import { Avatar, Button, Dropdown, Flex, Typography } from 'antd';
 import { ThemeProvider } from 'antd-style';
 import {
@@ -13,7 +12,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Header: React.FC = () => {
-  const { identity } = useAuth();
   return (
     <>
       <ThemeProvider themeMode="dark">
@@ -75,8 +73,12 @@ const Header: React.FC = () => {
                 }}
               >
                 <Flex align="center" gap={8}>
-                  <Avatar size="small" shape="square" src={identity?.avatar} />
-                  <Typography.Text>{identity?.nickname}</Typography.Text>
+                  <Avatar
+                    size="small"
+                    shape="square"
+                    src="https://i.pravatar.cc/128?img=12"
+                  />
+                  <Typography.Text>Nickname</Typography.Text>
                 </Flex>
               </Button>
             </ThemeProvider>
