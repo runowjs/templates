@@ -9,12 +9,12 @@
 
 ## Next.js
 
-| Icon                                                                                                    | Link                                                                           | Tags                                                      |
-|---------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|-----------------------------------------------------------|
-| <img height="24" src="https://simpleicons.org/icons/nextui.svg" width="24"/>                         | [react-nextjs-nextui](https://runow.dev/guide/react/next.html#next-ui)         | React, Next.js, NextUI, TailwindCSS, TypeScript           |
-| <img height="24" src="https://cdn.svgporn.com/logos/headlessui-icon.svg" width="24"/>                         | [react-nextjs-headlessui](https://runow.dev/guide/react/next.html#headless-ui) | React, Next.js, HeadlessUI, TailwindCSS, TypeScript       |
-| <img height="24" src="https://ui.shadcn.com/apple-touch-icon.png" width="24"/>                          | [react-nextjs-shadcnui](https://runow.dev/guide/react/next.html#shadcn-ui)     | React, Next.js, Shadcn/ui, TailwindCSS, TypeScript        |
-
+| Icon                                                                                                | Link                                                                           | Tags                                                |
+|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|-----------------------------------------------------|
+| <img height="24" src="https://tailwindcss.com/favicons/android-chrome-192x192.png?v=3" width="24"/> | [react-nextjs-tailwindcss](https://runow.dev/guide/react/next.html#shadcn-tailwindcss)  | React, Next.js, TailwindCSS, TypeScript             |
+| <img height="24" src="https://simpleicons.org/icons/nextui.svg" width="24"/>                        | [react-nextjs-nextui](https://runow.dev/guide/react/next.html#next-ui)         | React, Next.js, NextUI, TailwindCSS, TypeScript     |
+| <img height="24" src="https://cdn.svgporn.com/logos/headlessui-icon.svg" width="24"/>               | [react-nextjs-headlessui](https://runow.dev/guide/react/next.html#headless-ui) | React, Next.js, HeadlessUI, TailwindCSS, TypeScript |
+| <img height="24" src="https://ui.shadcn.com/apple-touch-icon.png" width="24"/>                      | [react-nextjs-shadcnui](https://runow.dev/guide/react/next.html#shadcn-ui)     | React, Next.js, Shadcn/ui, TailwindCSS, TypeScript  |
 
 ## Remix
 
