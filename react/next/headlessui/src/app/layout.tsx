@@ -4,7 +4,6 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'React + Next.js + HeadlessUI',
-  description: 'Powered by Runow',
 };
 
 export default function RootLayout({

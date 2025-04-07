@@ -5,7 +5,6 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'React + Next.js + ShadcnUI',
-  description: 'Powered by Runow',
 };
 
 export default function RootLayout({
