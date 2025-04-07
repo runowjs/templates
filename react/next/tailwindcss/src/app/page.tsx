@@ -2,10 +2,10 @@ export default function Home() {
   return (
     <div>
       <div className="w-full min-h-screen flex flex-col items-center justify-center gap-8">
-        <a href="https://headlessui.com/" target="_blank">
+        <a href="https://tailwindcss.com/" target="_blank">
           <img
             src="https://cdn.svgporn.com/logos/tailwindcss-icon.svg"
-            alt="tailwindcss ui logo"
+            alt="tailwindcss logo"
             className="h-[128px]"
           />
         </a>

@@ -1,0 +1,28 @@
+.wrap {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.logo {
+    width: 128px;
+    height: 128px;
+}
+
+.title {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.description a {
+    color: #22ac38;
+}
