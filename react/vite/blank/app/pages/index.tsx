@@ -1,8 +1,13 @@
-import './App.css';
+import type { Route } from './+types/index';
+import './styles.css';
 
-function App() {
+export function meta({}: Route.MetaArgs) {
+  return [{ title: 'React + Vite' }];
+}
+
+export default function Home() {
   return (
-    <>
+    <main>
       <a href="https://vite.dev/" target="_blank">
         <img
           src="https://cdn.svgporn.com/logos/vitejs.svg"
@@ -17,8 +22,6 @@ function App() {
           Runow
         </a>
       </p>
-    </>
+    </main>
   );
 }
-
-export default App;

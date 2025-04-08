@@ -1,0 +1,21 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: #22ac38;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #1f9933;
+}
