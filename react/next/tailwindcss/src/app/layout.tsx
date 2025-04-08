@@ -1,10 +1,9 @@
-import { Providers } from '@/app/providers';
 import type { Metadata } from 'next';
 import React from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'React + Next.js + NextUI',
+  title: 'React + Next.js + TailwindCSS',
 };
 
 export default function RootLayout({
@@ -13,10 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }
