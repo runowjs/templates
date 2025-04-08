@@ -4,7 +4,7 @@
 
 ```bash
 # npm 7+, extra double-dash is needed:
-$ npm create runow your-app-name -- --template react-nextjs-headlessui
+$ npm create runow your-app-name -- --template react-next-headlessui
 ```
 
 ## Started
