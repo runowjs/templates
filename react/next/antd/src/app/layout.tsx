@@ -1,6 +1,6 @@
 import { MessageProvider } from '@/providers/message';
 import { ThemeProvider } from '@/providers/theme';
-import '@ant-design/nextjs-registry';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import React from 'react';
@@ -19,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={theme} suppressHydrationWarning>
       <body>
-        <ThemeProvider initMode={theme}>
-          <MessageProvider>{children}</MessageProvider>
-        </ThemeProvider>
+        <AntdRegistry>
+          <ThemeProvider initMode={theme}>
+            <MessageProvider>{children}</MessageProvider>
+          </ThemeProvider>
+        </AntdRegistry>
       </body>
     </html>
   );
