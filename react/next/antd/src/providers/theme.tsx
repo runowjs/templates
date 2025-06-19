@@ -1,5 +1,6 @@
 'use client';
 import { darkConfig, lightConfig } from '@/config/theme';
+import { StyleProvider } from '@ant-design/cssinjs';
 import { ConfigProvider } from 'antd';
 import { setCookie } from 'cookies-next';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
@@ -44,17 +45,19 @@ export const ThemeProvider: React.FC<
         setMode,
       }}
     >
-      <ConfigProvider theme={mode === 'dark' ? darkConfig : lightConfig}>
-        <NextThemesProvider
-          attribute="class"
-          defaultTheme={mode}
-          enableColorScheme={false}
-          enableSystem={false}
-          storageKey="themeMode"
-        >
-          {children}
-        </NextThemesProvider>
-      </ConfigProvider>
+      <StyleProvider layer>
+        <ConfigProvider theme={mode === 'dark' ? darkConfig : lightConfig}>
+          <NextThemesProvider
+            attribute="class"
+            defaultTheme={mode}
+            enableColorScheme={false}
+            enableSystem={false}
+            storageKey="themeMode"
+          >
+            {children}
+          </NextThemesProvider>
+        </ConfigProvider>
+      </StyleProvider>
     </ThemeProviderContext.Provider>
   );
 };
