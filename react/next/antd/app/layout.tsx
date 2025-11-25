@@ -1,4 +1,3 @@
-import { MessageProvider } from '@/providers/message';
 import { ThemeProvider } from '@/providers/theme';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata } from 'next';
@@ -10,19 +9,18 @@ export const metadata: Metadata = {
   title: 'React + Next.js + Antd',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = cookies().get('themeMode')?.value || 'auto';
+  const cookie = await cookies();
+  const theme = cookie.get('theme')?.value || 'auto';
   return (
-    <html lang="en" className={theme} suppressHydrationWarning>
+    <html lang="en" className={theme}>
       <body>
         <AntdRegistry>
-          <ThemeProvider initMode={theme}>
-            <MessageProvider>{children}</MessageProvider>
-          </ThemeProvider>
+          <ThemeProvider initMode={theme}>{children}</ThemeProvider>
         </AntdRegistry>
       </body>
     </html>

@@ -1,8 +1,8 @@
 'use client';
+import { setTheme } from '@/app/actions/theme';
 import { darkConfig, lightConfig } from '@/config/theme';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { ConfigProvider } from 'antd';
-import { setCookie } from 'cookies-next';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
@@ -32,10 +32,8 @@ export const ThemeProvider: React.FC<
 
   const setMode = (mode: Mode) => {
     _setMode(mode);
-    setCookie('themeMode', mode, {
-      maxAge: 365 * 24 * 60 * 60,
-    });
-    localStorage.setItem('themeMode', mode);
+    localStorage.setItem('theme', mode);
+    setTheme(mode).then();
   };
 
   return (
@@ -52,7 +50,7 @@ export const ThemeProvider: React.FC<
             defaultTheme={mode}
             enableColorScheme={false}
             enableSystem={false}
-            storageKey="themeMode"
+            storageKey="theme"
           >
             {children}
           </NextThemesProvider>

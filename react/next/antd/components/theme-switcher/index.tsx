@@ -1,7 +1,8 @@
 'use client';
+import MoonLine from '@/icons/moon-line';
+import SunLine from '@/icons/sun-line';
 import { useTheme } from '@/providers/theme';
 import { Button } from 'antd';
-import { MoonIcon, SunIcon } from 'lucide-react';
 import React, { useCallback } from 'react';
 import './styles.css';
 
@@ -61,7 +62,7 @@ const ThemeSwitcher: React.FC = () => {
       color="default"
       variant="filled"
       size="large"
-      icon={mode === 'dark' ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+      icon={mode === 'dark' ? <SunLine /> : <MoonLine />}
       onClick={handleToggle}
     />
   );
